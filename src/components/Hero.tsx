@@ -115,7 +115,7 @@ export default function Hero({ ready }: { ready: boolean }) {
                   <span style={{ ...MONO, fontSize:11, color:"#475569" }}>{personal.location}</span>
                 </span>
                 <span style={{ width:1, height:10, background:"#1e293b" }} />
-                {[{ h:personal.github, l:"GitHub" },{ h:"https://www.linkedin.com/in/amitshravastav", l:"LinkedIn" }].map(s => (
+                {[{ h:personal.github, l:"GitHub" },{ h:personal.linkedin, l:"LinkedIn" }].map(s => (
                   <a key={s.l} href={s.h} target="_blank" rel="noopener noreferrer"
                     style={{ ...MONO, fontSize:11, color:"#475569", letterSpacing:".06em", transition:"color .2s" }}
                     onMouseEnter={e => (e.currentTarget.style.color="#06B6D4")}

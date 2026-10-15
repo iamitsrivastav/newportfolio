@@ -91,7 +91,7 @@ export default function Contact() {
             </a>
 
             <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:10 }}>
-              <a href="https://www.linkedin.com/in/amitshravastav" target="_blank" rel="noopener noreferrer"
+              <a href={personal.linkedin} target="_blank" rel="noopener noreferrer"
                 className="btn btn-s" style={{ justifyContent:"center", fontSize:12, letterSpacing:".07em" }}>
                 <LI/> LinkedIn
               </a>

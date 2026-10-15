@@ -9,13 +9,16 @@ html { scroll-behavior: smooth; }
 body {
   background: #070d18;
   color: #B8C4D6;
-  /* Inter for body text */
   font-family: var(--font-body), system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  cursor: none;
   line-height: 1.6;
+}
+
+/* Custom cursor only on pointer devices — keeps auto cursor on touch */
+@media (pointer: fine) {
+  body { cursor: none; }
 }
 
 /* Display font — Space Grotesk for headings */
@@ -288,4 +291,80 @@ a { color: inherit; text-decoration: none; }
     animation-iteration-count: 1 !important;
     transition-duration: .01ms !important;
   }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ACCESSIBILITY — focus-visible ring
+   (Only shows on keyboard nav, not on mouse click)
+═══════════════════════════════════════════════════════════ */
+:focus { outline: none; }
+
+:focus-visible {
+  outline: 2px solid #155EEF;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Skip-to-content link — shown only on focus */
+.skip-link {
+  position: absolute;
+  top: -999px; left: -999px;
+  z-index: 9999;
+  padding: 8px 16px;
+  background: #155EEF;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 6px;
+  text-decoration: none;
+}
+.skip-link:focus-visible {
+  top: 16px; left: 16px;
+  outline: 2px solid #38BDF8;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PORTRAIT IMAGE — polished frame utility
+═══════════════════════════════════════════════════════════ */
+.portrait-frame {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  background: rgba(17,25,40,0.8);
+  border: 1px solid rgba(21,94,239,0.22);
+  box-shadow:
+    0 8px 40px rgba(0,0,0,0.5),
+    inset 0 1px 0 rgba(255,255,255,0.06);
+}
+.portrait-frame::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #155EEF, #06B6D4, transparent);
+  z-index: 2;
+}
+.portrait-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(7,13,24,0.35) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   MOBILE — ensure touch devices get auto cursor
+═══════════════════════════════════════════════════════════ */
+@media (pointer: coarse) {
+  body { cursor: auto !important; }
+  .cursor-dot, .cursor-ring { display: none !important; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SELECTION COLOR
+═══════════════════════════════════════════════════════════ */
+::selection {
+  background: rgba(21,94,239,0.35);
+  color: #F8FAFC;
 }

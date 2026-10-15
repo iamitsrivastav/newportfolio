@@ -41,7 +41,7 @@ export default function Footer() {
           <div style={{ display:"flex", gap:7 }}>
             {[
               { href:`mailto:${personal.email}`,   icon:<ML/>, label:"Email"    },
-              { href:"https://www.linkedin.com/in/amitshravastav", icon:<LI/>, label:"LinkedIn" },
+              { href:personal.linkedin, icon:<LI/>, label:"LinkedIn" },
               { href:personal.github,               icon:<GH/>, label:"GitHub"  },
             ].map(l => (
               <a key={l.label} href={l.href}
